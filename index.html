@@ -26,33 +26,57 @@
     filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
 }
 
- /* Import Font eSports chuẩn Tiếng Việt */
+
+
+
+
+/* 1. Nạp Font eSports chuẩn Tiếng Việt từ Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Orbitron:wght@800&display=swap');
 
-/* Chỉnh Font & Hiệu ứng phát sáng cho RỒNG LỬA ESP */
-.hero h1 {
-    font-family: 'Teko', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: 3px;
-    margin-bottom: 0px;
-    text-shadow: 0 0 10px rgba(255, 68, 0, 0.8),
-                 0 0 20px rgba(255, 115, 0, 0.6),
-                 2px 2px 4px rgba(0, 0, 0, 0.9);
+/* 2. Đăng ký quy tắc đổi màu chuyển động liên tục (Animation) */
+@keyframes fireColorChange {
+    0% {
+        color: #FF5722; /* Cam cháy */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
+    }
+    33% {
+        color: #FFD700; /* Vàng kim */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+    66% {
+        color: #FF1744; /* Đỏ rực */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
+    }
+    100% {
+        color: #FF5722; /* Trở về màu ban đầu để lặp lại vô tận */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
+    }
 }
 
-/* Chỉnh Font & Màu vàng ánh kim cho ONE FOR ALL */
+/* 3. Áp dụng cho dòng chữ "RỒNG LỬA ESP" */
+.hero h1 {
+    font-family: 'Teko', sans-serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 0px;
+    
+    /* Chạy đổi màu 3 giây/vòng, lặp lại vô hạn (infinite) */
+    animation: fireColorChange 3s infinite linear;
+}
+
+/* 4. Áp dụng cho dòng chữ "ONE FOR ALL" */
 .hero p {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: #FFCC00;
-    letter-spacing: 5px;
+    color: #FFFFFF; /* Giữ màu trắng nét sạch */
+    letter-spacing: 4px;
     margin-top: 5px;
     margin-bottom: 20px;
-    text-shadow: 0 0 8px rgba(255, 204, 0, 0.6),
-                 1px 1px 3px rgba(0, 0, 0, 0.9);
+    
+    /* Viền đen mỏng bao quanh giúp chữ cực kỳ sắc nét */
+    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
 }
  
 *{margin:0;padding:0;box-sizing:border-box; font-family: Share Tech Mono, monospace}
