@@ -56,13 +56,16 @@
 /* 3. Áp dụng cho dòng chữ "RỒNG LỬA ESP" */
 .hero h1 {
     font-family: 'Teko', sans-serif;
-    font-size: 3.8rem;
+    font-size: 4rem; /* Tăng độ to lên một chút cho uy nghiêm */
     font-weight: 700;
+    color: #FFFFFF;  /* Thân chữ màu Trắng Sáng giúp nổi bật hoàn toàn */
     letter-spacing: 3px;
     margin-bottom: 0px;
     
-    /* Chạy đổi màu 3 giây/vòng, lặp lại vô hạn (infinite) */
-    animation: fireColorChange 3s infinite linear;
+    /* Hiệu ứng tỏa sáng dung nham Đỏ - Cam (Lava Glow) cực nổi */
+    text-shadow: 0 0 10px #FF3300,
+                 0 0 20px #FF6600,
+                 0 0 30px #FF9900;
 }
 
 /* 4. Áp dụng cho dòng chữ "ONE FOR ALL" */
