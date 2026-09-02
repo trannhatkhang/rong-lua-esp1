@@ -55,6 +55,32 @@
 
 /* 3. Áp dụng cho dòng chữ "RỒNG LỬA ESP" */
 .hero h1 {
+
+ /* 1. Tạo hiệu ứng nhịp đập viền lửa */
+@keyframes infiniteGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 68, 0, 0.6), 0 0 20px rgba(255, 68, 0, 0.4);
+        border-color: #FF4400;
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(255, 115, 0, 0.9), 0 0 45px rgba(255, 200, 0, 0.7);
+        border-color: #FFD700;
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 68, 0, 0.6), 0 0 20px rgba(255, 68, 0, 0.4);
+        border-color: #FF4400;
+    }
+}
+
+/* 2. Áp dụng viền cho phần nội dung ở giữa (Hero Content) */
+.hero-content {
+    border: 2px solid #FF4400;
+    border-radius: 12px;
+    padding: 20px 30px;
+    
+    /* Chạy viền phát sáng liên tục vô hạn (infinite) */
+    animation: infiniteGlow 2s infinite ease-in-out;
+}
     font-family: 'Teko', sans-serif;
     font-size: 3.8rem;
     font-weight: 700;
@@ -235,7 +261,20 @@ border-top:2px solid #c00;
 </style>
 </head>
 <body>
+<!-- Nhạc nền Attack on Titan cho Rồng Lửa ESP -->
+<audio id="bg-music" loop>
+    <source src="aot.mp3" type="audio/mpeg">
+</audio>
+ 
+ <script>
+    // Nhạc tự bật mượt mà ngay khi người dùng click bất kỳ đâu trên trang web
+    document.addEventListener('click', function() {
+        var music = document.getElementById('bg-music');
+        music.play();
+    }, { once: true });
+</script>
 
+ 
 <nav>
 <div class="logo">RỒNG LỬA ESP</div>
 <ul>
