@@ -56,16 +56,20 @@
 /* 3. Áp dụng cho dòng chữ "RỒNG LỬA ESP" */
 .hero h1 {
     font-family: 'Teko', sans-serif;
-    font-size: 4rem; /* Tăng độ to lên một chút cho uy nghiêm */
+    font-size: 3.8rem;
     font-weight: 700;
-    color: #FFFFFF;  /* Thân chữ màu Trắng Sáng giúp nổi bật hoàn toàn */
     letter-spacing: 3px;
     margin-bottom: 0px;
     
-    /* Hiệu ứng tỏa sáng dung nham Đỏ - Cam (Lava Glow) cực nổi */
-    text-shadow: 0 0 10px #FF3300,
-                 0 0 20px #FF6600,
-                 0 0 30px #FF9900;
+    /* 1. Thân chữ màu Trắng Xám Kim Loại dịu mắt, không lóa */
+    color: #E6E6E6;
+    
+    /* 2. Dùng 4 lớp viền mỏng đỏ thẫm (#660000) tách chữ khỏi nền + bóng đổ nhẹ chìm phía sau */
+    text-shadow: 2px  2px 0px #660000,
+                -2px -2px 0px #660000,
+                 2px -2px 0px #660000,
+                -2px  2px 0px #660000,
+                 0px  5px 12px rgba(0, 0, 0, 0.95);
 }
 
 /* 4. Áp dụng cho dòng chữ "ONE FOR ALL" */
