@@ -7,7 +7,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RỒNG LỬA ESP</title>
 <style>
+ 
+ .team-logo {
+    max-width: 180px; /* Điều chỉnh kích thước to/nhỏ của logo tại đây */
+    height: auto;
+    margin-bottom: 15px;
+    
+    /* Hiệu ứng viền sáng phát quang màu lửa cho logo */
+    filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
+    
+    /* Hiệu ứng chuyển đổi mượt mà */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
 
+/* Khi di chuột vào logo sẽ to lên nhẹ và sáng rực hơn */
+.team-logo:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
+}
+
+ 
 *{margin:0;padding:0;box-sizing:border-box; font-family: Share Tech Mono, monospace}
 body{background:#090909;color:#fff}
 nav{
@@ -171,7 +190,7 @@ border-top:2px solid #c00;
 
 <div class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('nhaydu.jpg') no-repeat center center/cover !important;">
  <!-- THAY FILE LOGO TẠI ĐÂY -->
-<img src="logoxoanen.jpg" class="team-logo">
+<img src="logoxoa.png" class="team-logo">
 
 <h1>RỒNG LỬA ESP</h1>
 <p>ONE • FOR • ALL </p>
