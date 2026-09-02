@@ -1,500 +1,387 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RỒNG LỬA ESP</title>
-<style>
- 
- .team-logo {
-    max-width: 250px; /* Điều chỉnh kích thước to/nhỏ của logo tại đây */
-    height: auto;
-    margin-bottom: 15px;
-    
-    /* Hiệu ứng viền sáng phát quang màu lửa cho logo */
-    filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
-    
-    /* Hiệu ứng chuyển đổi mượt mà */
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RỒNG LỬA ESP</title>
 
-/* Khi di chuột vào logo sẽ to lên nhẹ và sáng rực hơn */
-.team-logo:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
-}
+    <!-- Nạp phông chữ từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Share+Tech+Mono&family=Teko:wght@700&display=swap" rel="stylesheet">
 
+    <style>
+        /* 1. RESET BAN ĐẦU & CẤU HÌNH NỀN CHUNG */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+        }
 
+        body {
+            background: #090909;
+            color: #fff;
+        }
 
+        /* 2. THANH MENU (NAVIGATION) */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #111;
+            border-bottom: 2px solid #c00;
+        }
 
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff3b3b;
+        }
 
-/* 1. Nạp Font eSports chuẩn Tiếng Việt từ Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&family=Orbitron:wght@800&display=swap');
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
 
-/* 2. Đăng ký quy tắc đổi màu chuyển động liên tục (Animation) */
-@keyframes fireColorChange {
-    0% {
-        color: #FF5722; /* Cam cháy */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
-    }
-    33% {
-        color: #FFD700; /* Vàng kim */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
-    }
-    66% {
-        color: #FF1744; /* Đỏ rực */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
-    }
-    100% {
-        color: #FF5722; /* Trở về màu ban đầu để lặp lại vô tận */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
-    }
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
 
-/* 3. Áp dụng cho dòng chữ "RỒNG LỬA ESP" */
-.hero h1 {
-font-family: 'Teko', sans-serif;
-    font-size: 3.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 0px;
-    
-    /* Gọi tên hiệu ứng fireColorChange ở trên chạy trong 3 giây, lặp lại vô tận (infinite) */
-    animation: fireColorChange 3s infinite linear;
-}
+        /* 3. PHẦN BANNER CHÍNH (HERO SECTION) */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
 
+        .team-logo {
+            display: block;
+            max-width: 250px;
+            height: auto;
+            margin: 0 auto 15px auto;
+            filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
 
+        .team-logo:hover {
+            transform: scale(1.08);
+            filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
+        }
 
-@keyframes fireColorChange {
-    0% {
-        color: #FF5722; /* Cam cháy */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
-    }
-    33% {
-        color: #FFD700; /* Vàng kim */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
-    }
-    66% {
-        color: #FF1744; /* Đỏ rực */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
-    }
-    100% {
-        color: #FF5722; /* Trở về cam cháy */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
-    }
-}
-}
+        /* Tiêu đề chính "FIRE DRAGON ESP": ĐÃ ĐỔI SANG MÀU ĐỎ CỰC RỰC & RÕ NÉT */
+        .hero h1 {
+            font-family: 'Teko', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 0px;
+            color: #FF1744; /* Màu Đỏ Rực eSports */
+            text-shadow: 2px  2px 0px #000000,
+                        -2px -2px 0px #000000,
+                         2px -2px 0px #000000,
+                        -2px  2px 0px #000000,
+                         0px  0px 15px rgba(255, 23, 68, 0.6); /* Viền đen mỏng + phát sáng đỏ dịu */
+        }
 
-/* 2. Áp dụng viền cho phần nội dung ở giữa (Hero Content) */
-.hero-content {
-    border: 2px solid #FF4400;
-    border-radius: 12px;
-    padding: 20px 30px;
-    
-    /* Chạy viền phát sáng liên tục vô hạn (infinite) */
-    animation: infiniteGlow 2s infinite ease-in-out;
-}
-    font-family: 'Teko', sans-serif;
-    font-size: 3.8rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 0px;
-    
-    /* 1. Thân chữ màu Trắng Xám Kim Loại dịu mắt, không lóa */
-    color: #E6E6E6;
-    
-    /* 2. Dùng 4 lớp viền mỏng đỏ thẫm (#660000) tách chữ khỏi nền + bóng đổ nhẹ chìm phía sau */
-    text-shadow: 2px  2px 0px #660000,
-                -2px -2px 0px #660000,
-                 2px -2px 0px #660000,
-                -2px  2px 0px #660000,
-                 0px  5px 12px rgba(0, 0, 0, 0.95);
-}
+        /* Slogan "ONE • FOR • ALL" */
+        .hero p {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: 4px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+        }
 
-/* 4. Áp dụng cho dòng chữ "ONE FOR ALL" */
-.hero p {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #FFFFFF; /* Giữ màu trắng nét sạch */
-    letter-spacing: 4px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    
-    /* Viền đen mỏng bao quanh giúp chữ cực kỳ sắc nét */
-    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
-}
- 
-*{margin:0;padding:0;box-sizing:border-box; font-family: Share Tech Mono, monospace}
-body{background:#090909;color:#fff}
-nav{
-position:sticky;top:0;z-index:1000;
-display:flex;justify-content:space-between;align-items:center;
-padding:15px 40px;background:#111;border-bottom:2px solid #c00;
-}
-.logo{font-size:28px;font-weight:bold;color:#ff3b3b}
-nav ul{display:flex;gap:25px;list-style:none}
-nav a{color:white;text-decoration:none}
+        .btn {
+            margin-top: 25px;
+            background: #d40000;
+            padding: 14px 30px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-.hero h1{
+        /* Khung nội dung Hero có viền sáng nhẹ */
+        .hero-content {
+            border: 2px solid #FF4400;
+            border-radius: 12px;
+            padding: 20px 30px;
+            box-shadow: 0 0 15px rgba(255, 68, 0, 0.4);
+        }
 
-font-size:80px;
+        /* 4. CÁC PHẦN NỘI DUNG (SECTION) */
+        section {
+            padding: 60px 8%;
+        }
 
-font-weight:900;
+        .title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 30px;
+            color: #ff4040;
+        }
 
-text-transform:uppercase;
+        .achievement-box {
+            max-width: 1000px;
+            margin: auto;
+            background: #141414;
+            border: 2px solid #ff2d2d;
+            padding: 35px;
+            border-radius: 15px;
+            line-height: 1.9;
+        }
 
-background:linear-gradient(
-180deg,
-#ffffff,
-#ff4444
-);
+        .leaders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
--webkit-background-clip:text;
+        .card {
+            background: #141414;
+            border: 1px solid #ff2d2d;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+        }
 
--webkit-text-fill-color:transparent;
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
-letter-spacing:5px;
+        .card h3 {
+            margin-top: 10px;
+        }
 
-}
+        .army {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
 
-.hero{
-min-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:40px;
-background:linear-gradient(135deg,#2b0000,#a00000);
-}
+        .member {
+            background: #181818;
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+        }
 
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
 
-.team-logo{
-display:block;
-margin:0 auto 20px auto;
-width:180px;
-height:auto;
-}
+        .stat {
+            background: #141414;
+            border: 1px solid #ff2d2d;
+            padding: 25px;
+            border-radius: 12px;
+        }
 
-.hero h1{
-font-size:72px;
-letter-spacing:4px;
-}
+        footer {
+            background: #111;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 2px solid #c00;
+        }
 
-.hero p{margin-top:10px;font-size:20px;color:#ddd}
+        /* 5. NÚT BẬT/TẮT NHẠC Ở GÓC MÀN HÌNH */
+        .music-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            padding: 10px 16px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #FF4400;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 68, 0, 0.6);
+            transition: all 0.3s ease;
+        }
 
-.btn{
-margin-top:25px;
-background:#d40000;
-padding:14px 30px;
-border-radius:10px;
-color:white;
-text-decoration:none;
-display:inline-block;
-}
-
-section{padding:60px 8%}
-
-.achievement-box{
-max-width:1000px;
-margin:auto;
-background:#141414;
-border:2px solid #ff2d2d;
-padding:35px;
-border-radius:15px;
-line-height:1.9;
-}
-
-.title{
-text-align:center;
-font-size:42px;
-margin-bottom:30px;
-color:#ff4040;
-}
-
-.leaders{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.card{
-background:#141414;
-border:1px solid #ff2d2d;
-border-radius:14px;
-padding:20px;
-text-align:center;
-}
-
-.card img{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
-}
-
-.card h3{margin-top:10px}
-
-.army{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;
-}
-
-.member{
-background:#181818;
-border:1px solid #444;
-padding:10px;
-text-align:center;
-border-radius:8px;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:50px;
-margin-top:40px;
-}
-
-.stat{
-background:#141414;
-border:1px solid #ff2d2d;
-padding:25px;
-border-radius:12px;
-}
-
-footer{
-background:#111;
-padding:30px;
-text-align:center;
-margin-top:50px;
-border-top:2px solid #c00;
-}
-
-
-
- /* Nút bấm chuyển đổi nhạc cố định góc dưới bên phải */
-.music-toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    padding: 10px 16px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #FFFFFF;
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid #FF4400;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 68, 0, 0.6);
-    transition: all 0.3s ease;
-}
-
-.music-toggle-btn:hover {
-    background: #FF4400;
-    box-shadow: 0 0 20px rgba(255, 68, 0, 0.9);
-    transform: scale(1.05);
-}
-</style>
+        .music-toggle-btn:hover {
+            background: #FF4400;
+            box-shadow: 0 0 20px rgba(255, 68, 0, 0.9);
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-
-
-
-
- 
 <body>
- 
- <!-- Nút điều khiển Bật/Tắt nhạc ở góc dưới bên phải màn hình -->
-<button id="music-btn" class="music-toggle-btn">🔊 OFF</button>
 
-<audio id="bg-music" loop>
-    <source src="aot.mp3" type="audio/mpeg">
-</audio>
-<!-- Nhạc nền Attack on Titan cho Rồng Lửa ESP -->
-<audio id="bg-music" loop>
-    <source src="aot.mp3" type="audio/mpeg">
-</audio>
- 
- 
-<script>
-    const music = document.getElementById('bg-music');
-    const musicBtn = document.getElementById('music-btn');
+    <!-- Nút điều khiển Bật/Tắt nhạc cố định góc dưới màn hình -->
+    <button id="music-btn" class="music-toggle-btn">🔊 OFF</button>
 
-    // 1. Tự động bật nhạc khi người dùng click bất kỳ đâu lần đầu tiên
-    document.addEventListener('click', function startMusic() {
-        if (music.paused) {
-            music.play();
-            musicBtn.innerHTML = '🔊 ON';
-        }
-    }, { once: true });
+    <!-- Nhạc nền Attack on Titan -->
+    <audio id="bg-music" loop>
+        <source src="aot.mp3" type="audio/mpeg">
+    </audio>
 
-    // 2. Chức năng bấm trực tiếp vào nút để Bật/Tắt nhạc
-    musicBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
-        if (music.paused) {
-            music.play();
-            musicBtn.innerHTML = '🔊 ON';
-        } else {
-            music.pause();
-            musicBtn.innerHTML = '🔈 OFF';
-        }
-    });
-</script>
+    <!-- Thanh Navigation Menu -->
+    <nav>
+        <div class="logo">RỒNG LỬA ESP</div>
+        <ul>
+            <li><a href="#">Trang Chủ</a></li>
+            <li><a href="#leaders">Lãnh Đạo</a></li>
+            <li><a href="#army">Quân Đoàn</a></li>
+            <li><a href="#achievements">Thành Tích</a></li>
+            <li><a href="highlight.html">Highlight</a></li>
+        </ul>
+    </nav>
 
- 
-<nav>
-<div class="logo">RỒNG LỬA ESP</div>
-<ul>
-<li><a href="#">Trang Chủ</a></li>
-<li><a href="#leaders">Lãnh Đạo</a></li>
-<li><a href="#army">Quân Đoàn</a></li>
-<li><a href="#achievements">Thành Tích</a></li>
- <li><a href="highlight.html">Highlight</a></li>
-</ul>
-</nav>
-
-<div class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('vong.jpg') no-repeat center center/cover !important;">
- <!-- THAY FILE LOGO TẠI ĐÂY -->
-<img src="logoxoa.png" class="team-logo">
-
-<h1>FIRE DRAGON ESP</h1>
-<p>ONE • FOR • ALL </p>
-
-<a href="#leaders" class="btn">ENTER THE ARENA</a>
-</div>
-
-<section id="leaders">
-<h2 class="title">👑Honor Frame</h2>
-
-<div class="leaders">
-
-<div class="card"><img src="nhatkhang.jpg"><h3>KAWM</h3><p>Leader</p></div>
-<div class="card"><img src="levu.jpg"><h3>VUSENPAI</h3><p>Bomber</p></div>
-<div class="card"><img src="tranquy.jpg"><h3>TRQUY</h3><p>Sniper</p></div>
-<div class="card"><img src="vanmanh.jpg"><h3>DELIMA</h3><p>Rusher</p></div>
-<div class="card"><img src="bkhang.jpg"><h3>BKHANG</h3><p>Sniper</p></div>
-<div class="card"><img src="tkhang.jpg"><h3>TKHANG</h3><p>Sniper</p></div>
-<div class="card"><img src="trongtin.jpg"><h3>TTIN</h3><p>Sniper</p></div>
-<div class="card"><img src="giakhanh.jpg"><h3>GKHANH</h3><p>Rusher</p></div>
-<div class="card"><img src="cholibi.jpg"><h3>CHOLIBI</h3><p>Sniperr</p></div>
-<div class="card"><img src="minhtrirle.jpg"><h3>FEARLESS</h3><p>Rusher</p></div>
-<div class="card"><img src="nguyencong.jpg"><h3>NGCONG</h3><p>Sniper</p></div>
-
-</div>
-</section>
-
-<section id="army">
-<h2 class="title">⚔️QUÂN ĐOÀN RỒNG LỬA</h2>
- 
-
-<div class="army">
-<div class="member">GOLD</div><div class="member">NGUYỄN THÀNH</div>
-<div class="member">MINH THIỆN</div><div class="member">LAM THIÊN</div>
-<div class="member">HOÀNG ANH</div><div class="member">MẠNH ĐẠT</div>
-<div class="member">MINH QUÂN</div><div class="member">QUANG ANH</div>
-<div class="member">ĐỨC TÂN</div><div class="member">PHÚC TÂM</div>
-<div class="member">QUANG DŨNG</div><div class="member">HOÀNG THIÊN</div>
-<div class="member">BẢO LONG</div><div class="member">Member 14</div>
-<div class="member">Member 15</div><div class="member">Member 16</div>
-<div class="member">Member 17</div><div class="member">Member 18</div>
-<div class="member">Member 19</div><div class="member">Member 20</div>
-<div class="member">Member 21</div><div class="member">Member 22</div>
-<div class="member">Member 23</div><div class="member">Member 24</div>
-<div class="member">Member 25</div><div class="member">Member 26</div>
-<div class="member">Member 27</div><div class="member">Member 28</div>
-<div class="member">Member 29</div><div class="member">Member 30</div>
-<div class="member">Member 31</div><div class="member">Member 32</div>
-<div class="member">Member 33</div><div class="member">Member 34</div>
-<div class="member">Member 35</div><div class="member">Member 36</div>
-<div class="member">Member 37</div><div class="member">Member 38</div>
-<div class="member">Member 39</div><div class="member">Member 40</div>
-<div class="member">Member 41</div><div class="member">Member 42</div>
-<div class="member">Member 43</div><div class="member">Member 44</div>
-<div class="member">Member 45</div><div class="member">Member 46</div>
-<div class="member">Member 47</div><div class="member">Member 48</div>
-<div class="member">Member 49</div><div class="member">Member 50</div>
-</div>
-</section>
-
-<section id="achievements">
-<h2 class="title">🏆 THÀNH TÍCH & DẤU ẤN</h2>
- 
-
-<div class="stats">
-<div class="stat">
-<h2 class="title">🏆 THÀNH TÍCH & HÀNH TRÌNH PHÁT TRIỂN</h2>
-
-<div class="achievement-box">
-
-<h3>📜 LỊCH SỬ HÌNH THÀNH</h3>
-
-<p>
-RỒNG LỬA ESP được thành lập vào năm 2019 với 2 co-founder: KAWM, LÊ VŨ với mong muốn tạo nên sự
-đoàn kết, kỷ luật và luôn sẵn sàng hỗ trợ lẫn nhau trong game.
-Từ những thành viên đầu tiên, đội đã từng bước phát triển thành một quân đoàn
-với hàng chục thành viên hoạt động thường xuyên cho đến năm 2026
-</p>
-
-<br>
-
-<h3>🏅 NHỮNG CỘT MỐC NỔI BẬT</h3>
-
-<ul>
-
-<li>🔥 Tham gia nhiều hệ thống giải đấu (trọng điểm CKFF và trùm giải đấu FF).</li>
-
-<li>🔥 Duy trì phòng thường, phòng giải, các giải đấu từ 2025.</li>
-
-<li>🔥 Tuyển chọn và đào tạo nhiều thành viên mới.</li>
-
- <li>🔥 Top 17 FFSL15</li>
-
- <li>🔥 Quán quân keo vương tử chiến mùa 4 trong màu áo đội tuyển khác </li>
-
- <li>🔥 Top 3 Múa keo học sinh mùa 1</li>
- 
- <li>🔥 Nhiều lần được lên thumbnail của page CKFF, TRÙM GIẢI ĐẤU FF</li>
-
- 
-
- 
-
-</ul>
-
-<br>
-
- 
-
+    <!-- Hero Section Banner -->
+    <div class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('vong.jpg') no-repeat center center/cover !important;">
+        <img src="logoxoa.png" class="team-logo" alt="Logo Rồng Lửa">
+        <h1>FIRE DRAGON ESP</h1>
+        <p>ONE • FOR • ALL</p>
+        <a href="#leaders" class="btn">ENTER THE ARENA</a>
     </div>
 
-<BR>
+    <!-- Section Lãnh Đạo / Honor Frame -->
+    <section id="leaders">
+        <h2 class="title">👑Honor Frame</h2>
+        <div class="leaders">
+            <div class="card"><img src="nhatkhang.jpg"><h3>KAWM</h3><p>Leader</p></div>
+            <div class="card"><img src="levu.jpg"><h3>VUSENPAI</h3><p>Bomber</p></div>
+            <div class="card"><img src="tranquy.jpg"><h3>TRQUY</h3><p>Sniper</p></div>
+            <div class="card"><img src="vanmanh.jpg"><h3>DELIMA</h3><p>Rusher</p></div>
+            <div class="card"><img src="bkhang.jpg"><h3>BKHANG</h3><p>Sniper</p></div>
+            <div class="card"><img src="tkhang.jpg"><h3>TKHANG</h3><p>Sniper</p></div>
+            <div class="card"><img src="trongtin.jpg"><h3>TTIN</h3><p>Sniper</p></div>
+            <div class="card"><img src="giakhanh.jpg"><h3>GKHANH</h3><p>Rusher</p></div>
+            <div class="card"><img src="cholibi.jpg"><h3>CHOLIBI</h3><p>Sniperr</p></div>
+            <div class="card"><img src="minhtrirle.jpg"><h3>FEARLESS</h3><p>Rusher</p></div>
+            <div class="card"><img src="nguyencong.jpg"><h3>NGCONG</h3><p>Sniper</p></div>
+        </div>
+    </section>
 
-<div class="stat">
-<h3>📊 Thống kê</h3>
-<p>40+ thành viên</p>
-<p>10 thành viên chủ lực bắn giải</p>
-<p>Thành lập:2019</p>
-</div>
-<BR>
+    <!-- Section Quân Đoàn -->
+    <section id="army">
+        <h2 class="title">⚔️QUÂN ĐOÀN RỒNG LỬA</h2>
+        <div class="army">
+            <div class="member">GOLD</div><div class="member">NGUYỄN THÀNH</div>
+            <div class="member">MINH THIỆN</div><div class="member">LAM THIÊN</div>
+            <div class="member">HOÀNG ANH</div><div class="member">MẠNH ĐẠT</div>
+            <div class="member">MINH QUÂN</div><div class="member">QUANG ANH</div>
+            <div class="member">ĐỨC TÂN</div><div class="member">PHÚC TÂM</div>
+            <div class="member">QUANG DŨNG</div><div class="member">HOÀNG THIÊN</div>
+            <div class="member">BẢO LONG</div><div class="member">Member 14</div>
+            <div class="member">Member 15</div><div class="member">Member 16</div>
+            <div class="member">Member 17</div><div class="member">Member 18</div>
+            <div class="member">Member 19</div><div class="member">Member 20</div>
+            <div class="member">Member 21</div><div class="member">Member 22</div>
+            <div class="member">Member 23</div><div class="member">Member 24</div>
+            <div class="member">Member 25</div><div class="member">Member 26</div>
+            <div class="member">Member 27</div><div class="member">Member 28</div>
+            <div class="member">Member 29</div><div class="member">Member 30</div>
+            <div class="member">Member 31</div><div class="member">Member 32</div>
+            <div class="member">Member 33</div><div class="member">Member 34</div>
+            <div class="member">Member 35</div><div class="member">Member 36</div>
+            <div class="member">Member 37</div><div class="member">Member 38</div>
+            <div class="member">Member 39</div><div class="member">Member 40</div>
+            <div class="member">Member 41</div><div class="member">Member 42</div>
+            <div class="member">Member 43</div><div class="member">Member 44</div>
+            <div class="member">Member 45</div><div class="member">Member 46</div>
+            <div class="member">Member 47</div><div class="member">Member 48</div>
+            <div class="member">Member 49</div><div class="member">Member 50</div>
+        </div>
+    </section>
 
-<div class="stat">
-<h3>🚀 Mục tiêu</h3>
-<p>Tạo ra một cộng đồng lớn mạnh.</p>
-<p>Sân chơi lành mạnh từ sinh tồn đến tử chiên và từ new bie đến bán chuyên.</p>
-<p>Tham gia nhiều giải đấu hơn trong tương lai MOS SPL ĐCQĐ VN LEAUGE FFWS.</p>
-</div>
-</div>
-</section>
+    <!-- Section Thành Tích -->
+    <section id="achievements">
+        <h2 class="title">🏆 THÀNH TÍCH & DẤU ẤN</h2>
+        <div class="stats">
+            <div class="stat">
+                <h3 style="color:#ff4040; margin-bottom:15px;">📜 LỊCH SỬ HÌNH THÀNH</h3>
+                <p>
+                    RỒNG LỬA ESP được thành lập vào năm 2019 với 2 co-founder: KAWM, LÊ VŨ với mong muốn tạo nên sự
+                    đoàn kết, kỷ luật và luôn sẵn sàng hỗ trợ lẫn nhau trong game.
+                    Từ những thành viên đầu tiên, đội đã từng bước phát triển thành một quân đoàn
+                    với hàng chục thành viên hoạt động thường xuyên cho đến năm 2026.
+                </p>
+                <br>
+                <h3 style="color:#ff4040; margin-bottom:15px;">🏅 NHỮNG CỘT MỐC NỔI BẬT</h3>
+                <ul>
+                    <li>🔥 Tham gia nhiều hệ thống giải đấu (trọng điểm CKFF và trùm giải đấu FF).</li>
+                    <li>🔥 Duy trì phòng thường, phòng giải, các giải đấu từ 2025.</li>
+                    <li>🔥 Tuyển chọn và đào tạo nhiều thành viên mới.</li>
+                    <li>🔥 Top 17 FFSL15</li>
+                    <li>🔥 Quán quân keo vương tử chiến mùa 4 trong màu áo đội tuyển khác</li>
+                    <li>🔥 Top 3 Múa keo học sinh mùa 1</li>
+                    <li>🔥 Nhiều lần được lên thumbnail của page CKFF, TRÙM GIẢI ĐẤU FF</li>
+                </ul>
+            </div>
 
-<footer>
-Facebook | YouTube | Discord <br>
-© RỒNG LỬA ESP
-</footer>
+            <div class="stat">
+                <h3>📊 Thống kê</h3>
+                <p>40+ thành viên</p>
+                <p>10 thành viên chủ lực bắn giải</p>
+                <p>Thành lập: 2019</p>
+            </div>
 
+            <div class="stat">
+                <h3>🚀 Mục tiêu</h3>
+                <p>Tạo ra một cộng đồng lớn mạnh.</p>
+                <p>Sân chơi lành mạnh từ sinh tồn đến tử chiên và từ new bie đến bán chuyên.</p>
+                <p>Tham gia nhiều giải đấu hơn trong tương lai MOS SPL ĐCQĐ VN LEAUGE FFWS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        Facebook | YouTube | Discord <br>
+        © RỒNG LỬA ESP
+    </footer>
+
+    <!-- Script Xử Lý Âm Thanh -->
+    <script>
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+
+        // Autoplay nhạc khi click lần đầu tiên
+        document.addEventListener('click', function startMusic() {
+            if (music.paused) {
+                music.play();
+                musicBtn.innerHTML = '🔊 ON';
+            }
+        }, { once: true });
+
+        // Sự kiện click nút Mute/Unmute
+        musicBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (music.paused) {
+                music.play();
+                musicBtn.innerHTML = '🔊 ON';
+            } else {
+                music.pause();
+                musicBtn.innerHTML = '🔈 OFF';
+            }
+        });
+    </script>
 </body>
 </html>
