@@ -273,20 +273,77 @@ text-align:center;
 margin-top:50px;
 border-top:2px solid #c00;
 }
+
+
+
+ /* Nút bấm chuyển đổi nhạc cố định góc dưới bên phải */
+.music-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 10px 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #FF4400;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 68, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+    background: #FF4400;
+    box-shadow: 0 0 20px rgba(255, 68, 0, 0.9);
+    transform: scale(1.05);
+}
 </style>
 </head>
+
+
+
+
+ 
 <body>
+ 
+ <!-- Nút điều khiển Bật/Tắt nhạc ở góc dưới bên phải màn hình -->
+<button id="music-btn" class="music-toggle-btn">🔊 OFF</button>
+
+<audio id="bg-music" loop>
+    <source src="aot.mp3" type="audio/mpeg">
+</audio>
 <!-- Nhạc nền Attack on Titan cho Rồng Lửa ESP -->
 <audio id="bg-music" loop>
     <source src="aot.mp3" type="audio/mpeg">
 </audio>
  
- <script>
-    // Nhạc tự bật mượt mà ngay khi người dùng click bất kỳ đâu trên trang web
-    document.addEventListener('click', function() {
-        var music = document.getElementById('bg-music');
-        music.play();
+ 
+<script>
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+
+    // 1. Tự động bật nhạc khi người dùng click bất kỳ đâu lần đầu tiên
+    document.addEventListener('click', function startMusic() {
+        if (music.paused) {
+            music.play();
+            musicBtn.innerHTML = '🔊 ON';
+        }
     }, { once: true });
+
+    // 2. Chức năng bấm trực tiếp vào nút để Bật/Tắt nhạc
+    musicBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+        if (music.paused) {
+            music.play();
+            musicBtn.innerHTML = '🔊 ON';
+        } else {
+            music.pause();
+            musicBtn.innerHTML = '🔈 OFF';
+        }
+    });
 </script>
 
  
