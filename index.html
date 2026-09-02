@@ -55,21 +55,36 @@
 
 /* 3. Áp dụng cho dòng chữ "RỒNG LỬA ESP" */
 .hero h1 {
+font-family: 'Teko', sans-serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 0px;
+    
+    /* Gọi tên hiệu ứng fireColorChange ở trên chạy trong 3 giây, lặp lại vô tận (infinite) */
+    animation: fireColorChange 3s infinite linear;
+}
 
- /* 1. Tạo hiệu ứng nhịp đập viền lửa */
-@keyframes infiniteGlow {
+
+
+@keyframes fireColorChange {
     0% {
-        box-shadow: 0 0 10px rgba(255, 68, 0, 0.6), 0 0 20px rgba(255, 68, 0, 0.4);
-        border-color: #FF4400;
+        color: #FF5722; /* Cam cháy */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
     }
-    50% {
-        box-shadow: 0 0 25px rgba(255, 115, 0, 0.9), 0 0 45px rgba(255, 200, 0, 0.7);
-        border-color: #FFD700;
+    33% {
+        color: #FFD700; /* Vàng kim */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+    66% {
+        color: #FF1744; /* Đỏ rực */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
     }
     100% {
-        box-shadow: 0 0 10px rgba(255, 68, 0, 0.6), 0 0 20px rgba(255, 68, 0, 0.4);
-        border-color: #FF4400;
+        color: #FF5722; /* Trở về cam cháy */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
     }
+}
 }
 
 /* 2. Áp dụng viền cho phần nội dung ở giữa (Hero Content) */
