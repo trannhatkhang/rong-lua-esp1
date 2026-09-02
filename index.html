@@ -9,6 +9,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Share+Tech+Mono&family=Teko:wght@700&display=swap" rel="stylesheet">
 
     <style>
+
+
+        
+        /* 1. Đăng ký animation chuyển màu vô hạn (Đỏ -> Vàng -> Cam -> Đỏ) */
+@keyframes fireColorChange {
+    0% {
+        color: #FF1744; /* Đỏ rực */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
+    }
+    33% {
+        color: #FFD700; /* Vàng kim */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+    66% {
+        color: #FF5722; /* Cam cháy */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
+    }
+    100% {
+        color: #FF1744; /* Lặp lại màu đỏ ban đầu */
+        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
+    }
+}
+
+/* 2. Hạ thấp logo xuống bằng margin-top */
+.team-logo {
+    display: block;
+    max-width: 250px;
+    height: auto;
+    margin-top: 50px; /* Hạ thấp logo xuống 50px */
+    margin-bottom: 15px;
+    filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.team-logo:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
+}
+
+/* 3. Dòng chữ FIRE DRAGON ESP đổi màu liên tục mượt mà */
+.hero h1 {
+    font-family: 'Teko', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 0px;
+    
+    /* Chạy hiệu ứng đổi màu 3 giây/vòng, lặp lại vô tận */
+    animation: fireColorChange 3s infinite linear;
+}
+
+
+
+
+        
         /* 1. RESET BAN ĐẦU & CẤU HÌNH NỀN CHUNG */
         * {
             margin: 0;
