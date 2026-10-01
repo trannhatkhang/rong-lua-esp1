@@ -3,45 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RỒNG LỬA ESP</title>
+    <title>RỒNG LỬA ESP - Official Website</title>
 
-    <!-- Nạp phông chữ từ Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Share+Tech+Mono&family=Teko:wght@700&display=swap" rel="stylesheet">
+    <!-- 1. Font chữ Tiếng Việt chuẩn Esports: Oswald (Tiêu đề) + Be Vietnam Pro (Văn bản) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- 2. Thư viện Swiper CSS (Trượt danh sách mượt mà) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- 3. Icon FontAwesome (Dành cho icon Facebook & Âm thanh) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* 1. Đăng ký animation chuyển màu vô hạn (Đỏ -> Vàng -> Cam -> Đỏ) */
-        @keyframes fireColorChange {
-            0% {
-                color: #FF1744;
-                text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
-            }
-            33% {
-                color: #FFD700;
-                text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
-            }
-            66% {
-                color: #FF5722;
-                text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
-            }
-            100% {
-                color: #FF1744;
-            }
-        }
-
-        /* RESET BAN ĐẦU & CẤU HÌNH NỀN CHUNG */
+        /* RESET & SETUP NỀN CHUNG */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Be Vietnam Pro', sans-serif; /* Font Tiếng Việt chuẩn */
         }
 
         body {
             background: #090909;
             color: #fff;
+            overflow-x: hidden;
         }
 
-        /* THANH MENU (NAVIGATION) */
+        h1, h2, h3, .logo, nav a, .btn {
+            font-family: 'Oswald', sans-serif; /* Font tiêu đề ngầu, đậm chất Gaming */
+            text-transform: uppercase;
+        }
+
+        /* NAVIGATION BAR */
         nav {
             position: sticky;
             top: 0;
@@ -50,14 +45,16 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 40px;
-            background: #111;
-            border-bottom: 2px solid #c00;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #ff2d2d;
         }
 
         .logo {
             font-size: 28px;
-            font-weight: bold;
+            font-weight: 700;
             color: #ff3b3b;
+            letter-spacing: 1px;
         }
 
         nav ul {
@@ -69,14 +66,16 @@
         nav a {
             color: white;
             text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #ff4040;
+        nav a:hover, nav a.active {
+            color: #ff2d2d;
         }
 
-        /* PHẦN BANNER CHÍNH (HERO SECTION) */
+        /* HERO BANNER SECTION */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -85,222 +84,272 @@
             align-items: center;
             text-align: center;
             padding: 40px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(9, 9, 9, 1)), url('vong.jpg') no-repeat center center/cover;
         }
 
         .team-logo {
             display: block;
-            max-width: 250px;
+            max-width: 230px;
             height: auto;
-            margin-top: 50px;
             margin-bottom: 15px;
-            filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
-            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0px 0px 20px rgba(255, 45, 45, 0.8));
+            transition: transform 0.3s ease;
         }
 
         .team-logo:hover {
             transform: scale(1.08);
-            filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
         }
 
         .hero h1 {
-            font-family: 'Teko', sans-serif;
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 700;
             letter-spacing: 3px;
-            margin-bottom: 0px;
-            animation: fireColorChange 3s infinite linear;
+            color: #ff1744;
+            text-shadow: 0 0 20px rgba(255, 23, 68, 0.6);
+            margin-bottom: 5px;
         }
 
         .hero p {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #FFFFFF;
+            font-size: 1.2rem;
             letter-spacing: 4px;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
-            margin-top: 25px;
-            background: #d40000;
-            padding: 14px 30px;
-            border-radius: 10px;
-            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-block;
-            transition: background 0.3s, transform 0.2s;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background: #ff1a1a;
-            transform: scale(1.05);
+        .btn-primary {
+            background: #ff2d2d;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 45, 45, 0.5);
         }
 
-        /* CÁC PHẦN NỘI DUNG (SECTION) */
+        .btn-primary:hover {
+            background: #ff0000;
+            box-shadow: 0 0 25px rgba(255, 45, 45, 0.9);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #ff2d2d;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 45, 45, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL SECTION STYLES */
         section {
             padding: 60px 8%;
         }
 
         .title {
             text-align: center;
-            font-size: 42px;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             color: #ff4040;
+            letter-spacing: 1.5px;
         }
 
+        /* SECTION HONOR FRAME (LÃNH ĐẠO) */
         .leaders {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
         .card {
             background: #141414;
             border: 1px solid #ff2d2d;
-            border-radius: 14px;
+            border-radius: 12px;
             padding: 20px;
             text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b6b;
         }
 
         .card img {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
+            border: 2px solid #ff2d2d;
+            margin-bottom: 10px;
         }
 
         .card h3 {
-            margin-top: 10px;
+            font-size: 1.3rem;
+            color: #fff;
         }
 
-        .army {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
+        .card p {
+            color: #ff4040;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .member {
-            background: #181818;
-            border: 1px solid #444;
-            padding: 10px;
+        /* SECTION QUÂN ĐOÀN (SLIDER SWIPER) */
+        .army-swiper {
+            width: 100%;
+            padding: 20px 10px 50px 10px;
+        }
+
+        .member-card {
+            background: #141414;
+            border: 1px solid #333;
+            padding: 25px 15px;
             text-align: center;
-            border-radius: 8px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #eee;
+            transition: all 0.3s ease;
         }
 
-        /* SECTION VIDEO HIGHLIGHTS (MỚI THÊM) */
-        .video-container {
+        .member-card:hover {
+            border-color: #ff2d2d;
+            color: #ff2d2d;
+            box-shadow: 0 0 15px rgba(255, 45, 45, 0.3);
+        }
+
+        /* Tùy chỉnh Nút chuyển trang & Phân trang Swiper */
+        .swiper-button-next, .swiper-button-prev {
+            color: #ff2d2d !important;
+        }
+
+        .swiper-pagination-fraction {
+            color: #ff2d2d;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            bottom: 0px !important;
+        }
+
+        /* FLOATING BUTTONS (GÓC DƯỚI BÊN PHẢI) */
+        .floating-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .video-card {
-            background: #141414;
-            border: 2px solid #ff2d2d;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(255, 45, 45, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 315px;
-            max-width: 100%;
-        }
-
-        .video-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 25px rgba(255, 87, 34, 0.8);
-        }
-
-        .video-card iframe {
-            width: 100%;
-            height: 560px;
+            align-items: center;
+            color: white;
+            font-size: 1.3rem;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
             border: none;
-            display: block;
+            cursor: pointer;
         }
 
-        /* STATS & ACHIEVEMENTS */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-top: 40px;
+        .float-fb {
+            background: #1877F2;
+            box-shadow: 0 0 15px rgba(24, 119, 242, 0.6);
         }
 
-        .stat {
-            background: #141414;
-            border: 1px solid #ff2d2d;
-            padding: 25px;
-            border-radius: 12px;
+        .float-fb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(24, 119, 242, 0.9);
         }
 
+        .float-music {
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid #ff2d2d;
+            box-shadow: 0 0 15px rgba(255, 45, 45, 0.6);
+        }
+
+        .float-music:hover {
+            transform: scale(1.1);
+            background: #ff2d2d;
+        }
+
+        /* FOOTER */
         footer {
             background: #111;
             padding: 30px;
             text-align: center;
-            margin-top: 50px;
-            border-top: 2px solid #c00;
-        }
-
-        /* NÚT BẬT/TẮT NHẠC */
-        .music-toggle-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            padding: 10px 16px;
-            font-family: 'Orbitron', sans-serif;
+            border-top: 2px solid #ff2d2d;
+            color: #888;
             font-size: 0.9rem;
-            font-weight: bold;
-            color: #FFFFFF;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #FF4400;
-            border-radius: 20px;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(255, 68, 0, 0.6);
-            transition: all 0.3s ease;
-        }
-
-        .music-toggle-btn:hover {
-            background: #FF4400;
-            box-shadow: 0 0 20px rgba(255, 68, 0, 0.9);
-            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
-    <!-- Nút điều khiển Bật/Tắt nhạc -->
-    <button id="music-btn" class="music-toggle-btn">🔊 OFF</button>
-
-    <!-- Nhạc nền Attack on Titan -->
+    <!-- THAM CHIẾU ÂM THANH NỀN -->
     <audio id="bg-music" loop>
         <source src="aot.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Thanh Navigation Menu -->
+    <!-- NÚT NỔI GÓC PHẢI (FACEBOOK GROUP + MUSIC BUTTON) -->
+    <div class="floating-container">
+        <!-- Đặt đường dẫn Link Google/Facebook Group Custom của bạn vào href dưới đây -->
+        <a href="https://facebook.com" target="_blank" class="float-btn float-fb" title="Tham gia Nhóm Facebook / Custom Match">
+            <i class="fab font-awesome-icon fa-facebook-f"></i>
+        </a>
+        <button id="music-btn" class="float-btn float-music" title="Bật/Tắt Nhạc Nền">
+            <i class="fas fa-volume-xmark" id="music-icon"></i>
+        </button>
+    </div>
+
+    <!-- THANH MENU HUYỀN THOẠI -->
     <nav>
         <div class="logo">RỒNG LỬA ESP</div>
         <ul>
-            <li><a href="#">Trang Chủ</a></li>
+            <li><a href="index.html" class="active">Trang Chủ</a></li>
             <li><a href="#leaders">Lãnh Đạo</a></li>
             <li><a href="#army">Quân Đoàn</a></li>
-            <li><a href="#highlights">Highlight</a></li>
-            <li><a href="#achievements">Thành Tích</a></li>
+            <li><a href="thanh_tich.html">Thành Tích</a></li>
+            <li><a href="highlight.html">Highlight</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section Banner -->
-    <div class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('vong.jpg') no-repeat center center/cover !important;">
-        <img src="logoxoa.png" class="team-logo" alt="Logo Rồng Lửa">
+    <!-- HERO BANNER MAIN SECTION -->
+    <div class="hero">
+        <img src="logoxoa.png" class="team-logo" alt="Logo Rồng Lửa ESP">
         <h1>FIRE DRAGON ESP</h1>
         <p>ONE • FOR • ALL</p>
-        <a href="#leaders" class="btn">ENTER THE ARENA</a>
+        <div class="hero-btns">
+            <!-- ĐẶT LINK GOOGLE FORM TUYỂN THÀNH VIÊN VÀO THẺ A DƯỚI ĐÂY -->
+            <a href="https://forms.google.com" target="_blank" class="btn btn-primary">
+                <i class="fas fa-fire-flame-curved"></i> GIA NHẬP QUÂN ĐOÀN
+            </a>
+            <a href="#leaders" class="btn btn-secondary">KHÁM PHÁ NGAY</a>
+        </div>
     </div>
 
-    <!-- Section Lãnh Đạo / Honor Frame -->
+    <!-- SECTION LÃNH ĐẠO / HONOR FRAME -->
     <section id="leaders">
         <h2 class="title">👑 Honor Frame</h2>
         <div class="leaders">
@@ -312,128 +361,97 @@
             <div class="card"><img src="tkhang.jpg" alt="TKHANG"><h3>TKHANG</h3><p>Sniper</p></div>
             <div class="card"><img src="trongtin.jpg" alt="TTIN"><h3>TTIN</h3><p>Sniper</p></div>
             <div class="card"><img src="giakhanh.jpg" alt="GKHANH"><h3>GKHANH</h3><p>Rusher</p></div>
-            <div class="card"><img src="cholibikhac.jpg" alt="CHOLIBI"><h3>CHOLIBI</h3><p>Sniperr</p></div>
+            <div class="card"><img src="cholibikhac.jpg" alt="CHOLIBI"><h3>CHOLIBI</h3><p>Sniper</p></div>
             <div class="card"><img src="minhtrirle.jpg" alt="FEARLESS"><h3>FEARLESS</h3><p>Rusher</p></div>
             <div class="card"><img src="nguyencong.jpg" alt="NGCONG"><h3>NGCONG</h3><p>Sniper</p></div>
         </div>
     </section>
 
-    <!-- Section Quân Đoàn -->
+    <!-- SECTION QUÂN ĐOÀN (Tích hợp Swiper trượt vuốt 1/2, 2/3 mượt mà) -->
     <section id="army">
         <h2 class="title">⚔️ QUÂN ĐOÀN RỒNG LỬA</h2>
-        <div class="army">
-            <div class="member">GOLD</div><div class="member">NGUYỄN THÀNH</div>
-            <div class="member">MINH THIỆN</div><div class="member">LAM THIÊN</div>
-            <div class="member">HOÀNG ANH</div><div class="member">MẠNH ĐẠT</div>
-            <div class="member">MINH QUÂN</div><div class="member">QUANG ANH</div>
-            <div class="member">ĐỨC TÂN</div><div class="member">PHÚC TÂM</div>
-            <div class="member">QUANG DŨNG</div><div class="member">HOÀNG THIÊN</div>
-            <div class="member">BẢO LONG</div><div class="member">Member 14</div>
-            <div class="member">Member 15</div><div class="member">Member 16</div>
-            <div class="member">Member 17</div><div class="member">Member 18</div>
-            <div class="member">Member 19</div><div class="member">Member 20</div>
-            <div class="member">Member 21</div><div class="member">Member 22</div>
-            <div class="member">Member 23</div><div class="member">Member 24</div>
-            <div class="member">Member 25</div><div class="member">Member 26</div>
-            <div class="member">Member 27</div><div class="member">Member 28</div>
-            <div class="member">Member 29</div><div class="member">Member 30</div>
-            <div class="member">Member 31</div><div class="member">Member 32</div>
-            <div class="member">Member 33</div><div class="member">Member 34</div>
-            <div class="member">Member 35</div><div class="member">Member 36</div>
-            <div class="member">Member 37</div><div class="member">Member 38</div>
-            <div class="member">Member 39</div><div class="member">Member 40</div>
-            <div class="member">Member 41</div><div class="member">Member 42</div>
-            <div class="member">Member 43</div><div class="member">Member 44</div>
-            <div class="member">Member 45</div><div class="member">Member 46</div>
-            <div class="member">Member 47</div><div class="member">Member 48</div>
-            <div class="member">Member 49</div><div class="member">Member 50</div>
+        
+        <div class="swiper army-swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide"><div class="member-card">GOLD</div></div>
+                <div class="swiper-slide"><div class="member-card">NGUYỄN THÀNH</div></div>
+                <div class="swiper-slide"><div class="member-card">MINH THIỆN</div></div>
+                <div class="swiper-slide"><div class="member-card">LAM THIÊN</div></div>
+                <div class="swiper-slide"><div class="member-card">HOÀNG ANH</div></div>
+                <div class="swiper-slide"><div class="member-card">MẠNH ĐẠT</div></div>
+                <div class="swiper-slide"><div class="member-card">MINH QUÂN</div></div>
+                <div class="swiper-slide"><div class="member-card">QUANG ANH</div></div>
+                <div class="swiper-slide"><div class="member-card">ĐỨC TÂN</div></div>
+                <div class="swiper-slide"><div class="member-card">PHÚC TÂM</div></div>
+                <div class="swiper-slide"><div class="member-card">QUANG DŨNG</div></div>
+                <div class="swiper-slide"><div class="member-card">HOÀNG THIÊN</div></div>
+                <div class="swiper-slide"><div class="member-card">BẢO LONG</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 14</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 15</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 16</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 17</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 18</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 19</div></div>
+                <div class="swiper-slide"><div class="member-card">Member 20</div></div>
+            </div>
+
+            <!-- Mũi tên và Phân trang (Trang 1/2, 2/3,...) -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
-    <!-- SECTION HIGHLIGHT VIDEOS (MỚI THÊM 2 YOUTUBE SHORTS) -->
-    <section id="highlights">
-        <h2 class="title">🔥 HIGHLIGHT MATCHES</h2>
-        <div class="video-container">
-            <!-- Video 1 -->
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/qhZyCgJWkD4" title="Fire Dragon ESP Highlight 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <!-- Video 2 -->
-            <div class="video-card">
-                <iframe src="https://www.youtube.com/embed/6N8yvstoKJ0" title="Fire Dragon ESP Highlight 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Thành Tích -->
-    <section id="achievements">
-        <h2 class="title">🏆 THÀNH TÍCH & DẤU ẤN</h2>
-        <div class="stats">
-            <div class="stat">
-                <h3 style="color:#ff4040; margin-bottom:15px;">📜 LỊCH SỬ HÌNH THÀNH</h3>
-                <p>
-                    RỒNG LỬA ESP được thành lập vào năm 2019 với 2 co-founder: KAWM, LÊ VŨ với mong muốn tạo nên sự
-                    đoàn kết, kỷ luật và luôn sẵn sàng hỗ trợ lẫn nhau trong game.
-                    Từ những thành viên đầu tiên, đội đã từng bước phát triển thành một quân đoàn
-                    với hàng chục thành viên hoạt động thường xuyên cho đến năm 2026.
-                </p>
-                <br>
-                <h3 style="color:#ff4040; margin-bottom:15px;">🏅 NHỮNG CỘT MỐC NỔI BẬT</h3>
-                <ul>
-                    <li>🔥 Tham gia nhiều hệ thống giải đấu (trọng điểm CKFF và trùm giải đấu FF).</li>
-                    <li>🔥 Duy trì phòng thường, phòng giải, các giải đấu từ 2025.</li>
-                    <li>🔥 Tuyển chọn và đào tạo nhiều thành viên mới.</li>
-                    <li>🔥 Top 17 FFSL15</li>
-                    <li>🔥 Quán quân keo vương tử chiến mùa 4 trong màu áo đội tuyển khác</li>
-                    <li>🔥 Top 3 Múa keo học sinh mùa 1</li>
-                    <li>🔥 Nhiều lần được lên thumbnail của page CKFF, TRÙM GIẢI ĐẤU FF</li>
-                </ul>
-            </div>
-
-            <div class="stat">
-                <h3>📊 Thống kê</h3>
-                <p>40+ thành viên</p>
-                <p>10 thành viên chủ lực bắn giải</p>
-                <p>Thành lập: 2019</p>
-            </div>
-
-            <div class="stat">
-                <h3>🚀 Mục tiêu</h3>
-                <p>Tạo ra một cộng đồng lớn mạnh.</p>
-                <p>Sân chơi lành mạnh từ sinh tồn đến tử chiên và từ new bie đến bán chuyên.</p>
-                <p>Tham gia nhiều giải đấu hơn trong tương lai: MOS, SPL, HD PRO LEAGUE, CKFF PRO SCRIM, VN LEAUGE FFWS.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-        Facebook | YouTube | Discord <br>
-        © RỒNG LỬA ESP
+        <p>© 2026 RỒNG LỬA ESP. All Rights Reserved.</p>
     </footer>
 
-    <!-- Script Xử Lý Âm Thanh -->
+    <!-- Thư viện Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- JS Xử lý Slider & Âm thanh -->
     <script>
+        // 1. Khởi tạo Slider trượt ngang Swiper.js
+        const swiper = new Swiper('.army-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 15,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction', // Hiển thị số trang 1/2, 2/3...
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+            }
+        });
+
+        // 2. Script Bật/Tắt Nhạc Nền
         const music = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
+        const musicIcon = document.getElementById('music-icon');
 
-        // Autoplay nhạc khi click lần đầu tiên
         document.addEventListener('click', function startMusic() {
             if (music.paused) {
                 music.play();
-                musicBtn.innerHTML = '🔊 ON';
+                musicIcon.className = 'fas fa-volume-high';
             }
         }, { once: true });
 
-        // Sự kiện click nút Mute/Unmute
         musicBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             if (music.paused) {
                 music.play();
-                musicBtn.innerHTML = '🔊 ON';
+                musicIcon.className = 'fas fa-volume-high';
             } else {
                 music.pause();
-                musicBtn.innerHTML = '🔈 OFF';
+                musicIcon.className = 'fas fa-volume-xmark';
             }
         });
     </script>
