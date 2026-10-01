@@ -35,10 +35,30 @@
 
         .stat-box {
             background: #141414; border: 1px solid #ff2d2d; border-radius: 12px; padding: 30px;
+            box-shadow: 0 0 15px rgba(255, 45, 45, 0.1);
         }
-        .stat-box h3 { color: #ff4040; margin-bottom: 15px; font-size: 1.5rem; }
+        .stat-box h3 { color: #ff4040; margin-bottom: 20px; font-size: 1.6rem; letter-spacing: 1px; }
         .stat-box ul { list-style: none; }
-        .stat-box li { margin-bottom: 10px; font-size: 1rem; color: #ddd; }
+        .stat-box li { margin-bottom: 12px; font-size: 1.05rem; color: #ddd; line-height: 1.5; }
+
+        /* CSS MỚI CHO TIMELINE LỊCH SỬ */
+        .history-timeline p {
+            margin-bottom: 18px;
+            padding-left: 15px;
+            border-left: 3px solid #ff2d2d;
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        .history-timeline .year {
+            color: #ff4040;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+        .history-timeline strong { color: #fff; }
 
         /* THƯ VIỆN ẢNH CHUẨN TỈ LỆ 16:9 */
         .gallery-grid {
@@ -59,7 +79,6 @@
             box-shadow: 0 0 20px rgba(255, 45, 45, 0.6);
         }
 
-        /* Khung ảnh ép theo tỉ lệ 16:9 */
         .img-container {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -134,7 +153,13 @@
         <div class="stats-grid">
             <div class="stat-box">
                 <h3>📜 LỊCH SỬ HÌNH THÀNH</h3>
-                <p>RỒNG LỬA ESP được thành lập vào năm 2019 bởi KAWM. Đến năm 2020, quân đoàn đã bén duyên với tử chiến múa keo và giữ vững truyền thống ấy cho đến tận đầu năm 2025. Sau năm 2025, một đế chế esport đã trỗi dậy, mang theo biết bao niềm mong đợi về một tương lai làm chủ sân chơi battle royale. Đến năm 2026, Team Rồng Lửa ESP đã gặt hái được cho mình rất nhiều thành tích nổi bật đáng chú ý ở những giải đấu bán chuyên.</p>
+                <!-- HTML TIMELINE MỚI DỰA TRÊN NỘI DUNG CỦA BẠN -->
+                <div class="history-timeline">
+                    <p><span class="year">2019</span><br> RỒNG LỬA ESP chính thức được thành lập bởi <strong>KAWM</strong>.</p>
+                    <p><span class="year">2020 - Đầu 2025</span><br> Quân đoàn bén duyên với tử chiến múa keo và giữ vững bản sắc truyền thống ấy trong suốt thời gian dài.</p>
+                    <p><span class="year">Sau 2025</span><br> Một đế chế Esports trỗi dậy, mang theo biết bao tham vọng và niềm mong đợi về một tương lai làm chủ sân chơi Battle Royale.</p>
+                    <p><span class="year">2026 - Nay</span><br> Team Rồng Lửa ESP đã gặt hái được rất nhiều thành tích nổi bật và đáng chú ý ở những giải đấu bán chuyên.</p>
+                </div>
             </div>
             <div class="stat-box">
                 <h3>🏅 CỘT MỐC NỔI BẬT</h3>
@@ -149,10 +174,8 @@
             </div>
         </div>
 
-        <!-- BẢNG THƯ VIỆN ẢNH BẰNG CHỨNG GIẢI ĐẤU (ĐÃ SỬA LINK PHÓNG TO CHUẨN ĐÚNG TỆP) -->
         <h2 class="title" style="font-size: 2rem;">📸 BẰNG CHỨNG GIẢI ĐẤU</h2>
         <div class="gallery-grid">
-            <!-- Ảnh 1 (Trùm Học Sinh 4) -->
             <div class="gallery-item" onclick="openModal('ths4.jpg')">
                 <div class="img-container">
                     <img src="ths4.jpg" alt="Trùm học sinh 4">
@@ -160,7 +183,6 @@
                 <p>Trùm Học Sinh 4</p>
             </div>
 
-            <!-- Ảnh 2 (HD Pro League 3) -->
             <div class="gallery-item" onclick="openModal('hdpl3.jpg')">
                 <div class="img-container">
                     <img src="hdpl3.jpg" alt="HD Pro League 3">
@@ -170,7 +192,6 @@
         </div>
     </section>
 
-    <!-- POPUP PHÓNG TO ẢNH -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="close-btn">&times;</span>
         <img class="modal-content" id="modalImg">
@@ -178,7 +199,6 @@
 
     <footer>© 2026 RỒNG LỬA ESP. All Rights Reserved.</footer>
 
-    <!-- SCRIPT PHÓNG TO ẢNH -->
     <script>
         function openModal(imgSrc) {
             const modal = document.getElementById('imageModal');
