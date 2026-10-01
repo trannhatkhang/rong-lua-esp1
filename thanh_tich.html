@@ -6,6 +6,7 @@
     <title>Thành Tích & Dấu Ấn - RỒNG LỬA ESP</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Be Vietnam Pro', sans-serif; }
@@ -39,19 +40,80 @@
         .stat-box ul { list-style: none; }
         .stat-box li { margin-bottom: 10px; font-size: 1rem; color: #ddd; }
 
-        /* KHU VỰC ẢNH CHỨNG MINH / BẰNG CHỨNG GIẢI ĐẤU */
+        /* THƯ VIỆN ẢNH CHUẨN TỈ LỆ 16:9 */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
         .gallery-item {
-            background: #141414; border: 1px solid #333; border-radius: 10px; overflow: hidden;
-            transition: transform 0.3s;
+            background: #141414;
+            border: 1px solid #ff2d2d;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .gallery-item:hover { transform: scale(1.03); border-color: #ff2d2d; }
-        .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; }
-        .gallery-item p { padding: 12px; text-align: center; font-size: 0.95rem; color: #ccc; }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 45, 45, 0.6);
+        }
+
+        /* Khung ảnh ép theo tỉ lệ 16:9 */
+        .img-container {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Cố định chuẩn tỉ lệ 16:9 */
+            overflow: hidden;
+            background: #000;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Giữ nguyên toàn bộ nội dung ảnh bảng điểm không bị mất chữ */
+            display: block;
+        }
+
+        .gallery-item p {
+            padding: 14px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            background: #141414;
+            border-top: 1px solid #222;
+        }
+
+        /* KHUNG POPUP PHÓNG TO ẢNH (MODAL) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border: 2px solid #ff2d2d;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 45, 45, 0.8);
+            object-fit: contain;
+        }
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-btn:hover { color: #ff2d2d; }
 
         footer { background: #111; padding: 30px; text-align: center; border-top: 2px solid #ff2d2d; color: #888; }
     </style>
@@ -77,38 +139,55 @@
             <div class="stat-box">
                 <h3>🏅 CỘT MỐC NỔI BẬT</h3>
                 <ul>
-                    <li>🔥 Top 17 FF Super leauge 15</li>
+                    <li>🔥 Top 17 FFSL15</li>
                     <li>🔥 Quán quân keo vương tử chiến mùa 4</li>
                     <li>🔥 Top 3 Múa keo học sinh mùa 1</li>
-                    <li>🔥 Top 4 trùm học sinh 4</li>
-                    <li>🔥 Top 10 HD Pro leauge 3</li>
+                    <li>🔥 Xuất hiện trên Thumbnail CKFF & TRÙM GIẢI ĐẤU FF</li>
                 </ul>
             </div>
         </div>
 
-        <!-- BẢNG THƯ VIỆN ẢNH CHỨNG MINH THÀNH TÍCH -->
+        <!-- BẢNG THƯ VIỆN ẢNH BẰNG CHỨNG GIẢI ĐẤU (16:9 + CLICK PHÓNG TO) -->
         <h2 class="title" style="font-size: 2rem;">📸 BẰNG CHỨNG GIẢI ĐẤU</h2>
         <div class="gallery-grid">
-            <!-- Ảnh mẫu 1 -->
-            <div class="gallery-item">
-                <img src="ths4.jpg" alt="Chứng nhận giải đấu">
-                <p>Trùm học sinh 4</p>
+            <!-- Ảnh 1 (Trùm Học Sinh 4) -->
+            <div class="gallery-item" onclick="openModal('https://trannhatkhang.github.io/rong-lua-esp1/vong.jpg')">
+                <div class="img-container">
+                    <img src="vong.jpg" alt="Trùm học sinh 4">
+                </div>
+                <p>Trùm Học Sinh 4</p>
             </div>
-            <!-- Ảnh mẫu 2 -->
-            <div class="gallery-item">
-                <img src="hdpl3.jpg" alt="Bảng xếp hạng">
-                <p>HD Pro Leauge 3</p>
+
+            <!-- Ảnh 2 (HD Pro League 3) -->
+            <div class="gallery-item" onclick="openModal('https://trannhatkhang.github.io/rong-lua-esp1/vong.jpg')">
+                <div class="img-container">
+                    <img src="vong.jpg" alt="HD Pro League 3">
+                </div>
+                <p>HD Pro League 3</p>
             </div>
-            
-            <!-- Sau này bạn cứ copy thêm thẻ gallery-item này để thêm ảnh thành tích nhé -->
         </div>
     </section>
 
+    <!-- POPUP PHÓNG TO ẢNH -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
     <footer>© 2026 RỒNG LỬA ESP. All Rights Reserved.</footer>
-</body>
-</html>
-            else { music.pause(); musicIcon.className = 'fas fa-volume-xmark'; }
-        });
+
+    <!-- SCRIPT PHÓNG TO ẢNH -->
+    <script>
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
