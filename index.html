@@ -9,62 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Share+Tech+Mono&family=Teko:wght@700&display=swap" rel="stylesheet">
 
     <style>
-
-
-        
         /* 1. Đăng ký animation chuyển màu vô hạn (Đỏ -> Vàng -> Cam -> Đỏ) */
-@keyframes fireColorChange {
-    0% {
-        color: #FF1744; /* Đỏ rực */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
-    }
-    33% {
-        color: #FFD700; /* Vàng kim */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
-    }
-    66% {
-        color: #FF5722; /* Cam cháy */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
-    }
-    100% {
-        color: #FF1744; /* Lặp lại màu đỏ ban đầu */
-        text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
-    }
-}
+        @keyframes fireColorChange {
+            0% {
+                color: #FF1744;
+                text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 23, 68, 0.8);
+            }
+            33% {
+                color: #FFD700;
+                text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 15px rgba(255, 215, 0, 0.8);
+            }
+            66% {
+                color: #FF5722;
+                text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000, 0 0 12px rgba(255, 87, 34, 0.8);
+            }
+            100% {
+                color: #FF1744;
+            }
+        }
 
-/* 2. Hạ thấp logo xuống bằng margin-top */
-.team-logo {
-    display: block;
-    max-width: 250px;
-    height: auto;
-    margin-top: 50px; /* Hạ thấp logo xuống 50px */
-    margin-bottom: 15px;
-    filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.team-logo:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
-}
-
-/* 3. Dòng chữ FIRE DRAGON ESP đổi màu liên tục mượt mà */
-.hero h1 {
-    font-family: 'Teko', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 0px;
-    
-    /* Chạy hiệu ứng đổi màu 3 giây/vòng, lặp lại vô tận */
-    animation: fireColorChange 3s infinite linear;
-}
-
-
-
-
-        
-        /* 1. RESET BAN ĐẦU & CẤU HÌNH NỀN CHUNG */
+        /* RESET BAN ĐẦU & CẤU HÌNH NỀN CHUNG */
         * {
             margin: 0;
             padding: 0;
@@ -77,7 +41,7 @@
             color: #fff;
         }
 
-        /* 2. THANH MENU (NAVIGATION) */
+        /* THANH MENU (NAVIGATION) */
         nav {
             position: sticky;
             top: 0;
@@ -105,9 +69,14 @@
         nav a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
-        /* 3. PHẦN BANNER CHÍNH (HERO SECTION) */
+        nav a:hover {
+            color: #ff4040;
+        }
+
+        /* PHẦN BANNER CHÍNH (HERO SECTION) */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -122,7 +91,8 @@
             display: block;
             max-width: 250px;
             height: auto;
-            margin: 0 auto 15px auto;
+            margin-top: 50px;
+            margin-bottom: 15px;
             filter: drop-shadow(0px 0px 18px rgba(255, 68, 0, 0.9));
             transition: transform 0.3s ease, filter 0.3s ease;
         }
@@ -132,22 +102,15 @@
             filter: drop-shadow(0px 0px 28px rgba(255, 115, 0, 1));
         }
 
-        /* Tiêu đề chính "FIRE DRAGON ESP": ĐÃ ĐỔI SANG MÀU ĐỎ CỰC RỰC & RÕ NÉT */
         .hero h1 {
             font-family: 'Teko', sans-serif;
             font-size: 4rem;
             font-weight: 700;
             letter-spacing: 3px;
             margin-bottom: 0px;
-            color: #FF1744; /* Màu Đỏ Rực eSports */
-            text-shadow: 2px  2px 0px #000000,
-                        -2px -2px 0px #000000,
-                         2px -2px 0px #000000,
-                        -2px  2px 0px #000000,
-                         0px  0px 15px rgba(255, 23, 68, 0.6); /* Viền đen mỏng + phát sáng đỏ dịu */
+            animation: fireColorChange 3s infinite linear;
         }
 
-        /* Slogan "ONE • FOR • ALL" */
         .hero p {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
@@ -167,17 +130,15 @@
             color: white;
             text-decoration: none;
             display: inline-block;
+            transition: background 0.3s, transform 0.2s;
         }
 
-        /* Khung nội dung Hero có viền sáng nhẹ */
-        .hero-content {
-            border: 2px solid #FF4400;
-            border-radius: 12px;
-            padding: 20px 30px;
-            box-shadow: 0 0 15px rgba(255, 68, 0, 0.4);
+        .btn:hover {
+            background: #ff1a1a;
+            transform: scale(1.05);
         }
 
-        /* 4. CÁC PHẦN NỘI DUNG (SECTION) */
+        /* CÁC PHẦN NỘI DUNG (SECTION) */
         section {
             padding: 60px 8%;
         }
@@ -187,16 +148,6 @@
             font-size: 42px;
             margin-bottom: 30px;
             color: #ff4040;
-        }
-
-        .achievement-box {
-            max-width: 1000px;
-            margin: auto;
-            background: #141414;
-            border: 2px solid #ff2d2d;
-            padding: 35px;
-            border-radius: 15px;
-            line-height: 1.9;
         }
 
         .leaders {
@@ -238,6 +189,39 @@
             border-radius: 8px;
         }
 
+        /* SECTION VIDEO HIGHLIGHTS (MỚI THÊM) */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background: #141414;
+            border: 2px solid #ff2d2d;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 45, 45, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 315px;
+            max-width: 100%;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.8);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 560px;
+            border: none;
+            display: block;
+        }
+
+        /* STATS & ACHIEVEMENTS */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -260,7 +244,7 @@
             border-top: 2px solid #c00;
         }
 
-        /* 5. NÚT BẬT/TẮT NHẠC Ở GÓC MÀN HÌNH */
+        /* NÚT BẬT/TẮT NHẠC */
         .music-toggle-btn {
             position: fixed;
             bottom: 20px;
@@ -288,7 +272,7 @@
 </head>
 <body>
 
-    <!-- Nút điều khiển Bật/Tắt nhạc cố định góc dưới màn hình -->
+    <!-- Nút điều khiển Bật/Tắt nhạc -->
     <button id="music-btn" class="music-toggle-btn">🔊 OFF</button>
 
     <!-- Nhạc nền Attack on Titan -->
@@ -303,8 +287,8 @@
             <li><a href="#">Trang Chủ</a></li>
             <li><a href="#leaders">Lãnh Đạo</a></li>
             <li><a href="#army">Quân Đoàn</a></li>
+            <li><a href="#highlights">Highlight</a></li>
             <li><a href="#achievements">Thành Tích</a></li>
-            <li><a href="highlight.html">Highlight</a></li>
         </ul>
     </nav>
 
@@ -318,25 +302,25 @@
 
     <!-- Section Lãnh Đạo / Honor Frame -->
     <section id="leaders">
-        <h2 class="title">👑Honor Frame</h2>
+        <h2 class="title">👑 Honor Frame</h2>
         <div class="leaders">
-            <div class="card"><img src="nhatkhang.jpg"><h3>KAWM</h3><p>Leader</p></div>
-            <div class="card"><img src="levu.jpg"><h3>VUSENPAI</h3><p>Bomber</p></div>
-            <div class="card"><img src="tranquy.jpg"><h3>TRQUY</h3><p>Sniper</p></div>
-            <div class="card"><img src="vanmanh.jpg"><h3>DELIMA</h3><p>Rusher</p></div>
-            <div class="card"><img src="bkhang.jpg"><h3>BKHANG</h3><p>Sniper</p></div>
-            <div class="card"><img src="tkhang.jpg"><h3>TKHANG</h3><p>Sniper</p></div>
-            <div class="card"><img src="trongtin.jpg"><h3>TTIN</h3><p>Sniper</p></div>
-            <div class="card"><img src="giakhanh.jpg"><h3>GKHANH</h3><p>Rusher</p></div>
-            <div class="card"><img src="cholibikhac.jpg"><h3>CHOLIBI</h3><p>Sniperr</p></div>
-            <div class="card"><img src="minhtrirle.jpg"><h3>FEARLESS</h3><p>Rusher</p></div>
-            <div class="card"><img src="nguyencong.jpg"><h3>NGCONG</h3><p>Sniper</p></div>
+            <div class="card"><img src="nhatkhang.jpg" alt="KAWM"><h3>KAWM</h3><p>Leader</p></div>
+            <div class="card"><img src="levu.jpg" alt="VUSENPAI"><h3>VUSENPAI</h3><p>Bomber</p></div>
+            <div class="card"><img src="tranquy.jpg" alt="TRQUY"><h3>TRQUY</h3><p>Sniper</p></div>
+            <div class="card"><img src="vanmanh.jpg" alt="DELIMA"><h3>DELIMA</h3><p>Rusher</p></div>
+            <div class="card"><img src="bkhang.jpg" alt="BKHANG"><h3>BKHANG</h3><p>Sniper</p></div>
+            <div class="card"><img src="tkhang.jpg" alt="TKHANG"><h3>TKHANG</h3><p>Sniper</p></div>
+            <div class="card"><img src="trongtin.jpg" alt="TTIN"><h3>TTIN</h3><p>Sniper</p></div>
+            <div class="card"><img src="giakhanh.jpg" alt="GKHANH"><h3>GKHANH</h3><p>Rusher</p></div>
+            <div class="card"><img src="cholibikhac.jpg" alt="CHOLIBI"><h3>CHOLIBI</h3><p>Sniperr</p></div>
+            <div class="card"><img src="minhtrirle.jpg" alt="FEARLESS"><h3>FEARLESS</h3><p>Rusher</p></div>
+            <div class="card"><img src="nguyencong.jpg" alt="NGCONG"><h3>NGCONG</h3><p>Sniper</p></div>
         </div>
     </section>
 
     <!-- Section Quân Đoàn -->
     <section id="army">
-        <h2 class="title">⚔️QUÂN ĐOÀN RỒNG LỬA</h2>
+        <h2 class="title">⚔️ QUÂN ĐOÀN RỒNG LỬA</h2>
         <div class="army">
             <div class="member">GOLD</div><div class="member">NGUYỄN THÀNH</div>
             <div class="member">MINH THIỆN</div><div class="member">LAM THIÊN</div>
@@ -363,6 +347,21 @@
             <div class="member">Member 45</div><div class="member">Member 46</div>
             <div class="member">Member 47</div><div class="member">Member 48</div>
             <div class="member">Member 49</div><div class="member">Member 50</div>
+        </div>
+    </section>
+
+    <!-- SECTION HIGHLIGHT VIDEOS (MỚI THÊM 2 YOUTUBE SHORTS) -->
+    <section id="highlights">
+        <h2 class="title">🔥 HIGHLIGHT MATCHES</h2>
+        <div class="video-container">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/qhZyCgJWkD4" title="Fire Dragon ESP Highlight 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/6N8yvstoKJ0" title="Fire Dragon ESP Highlight 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
 
@@ -399,7 +398,7 @@
             </div>
 
             <div class="stat">
-                <h3>🚀Mục tiêu</h3>
+                <h3>🚀 Mục tiêu</h3>
                 <p>Tạo ra một cộng đồng lớn mạnh.</p>
                 <p>Sân chơi lành mạnh từ sinh tồn đến tử chiên và từ new bie đến bán chuyên.</p>
                 <p>Tham gia nhiều giải đấu hơn trong tương lai: MOS, SPL, HD PRO LEAGUE, CKFF PRO SCRIM, VN LEAUGE FFWS.</p>
